@@ -1,4 +1,11 @@
-export default function Form({handleChange, setShowForm}){
+import {useStaet} from 'react';
+
+export default function Form({setShowForm, setValue, createMission}){
+
+  const handleChange = (e) => { //form에 할일내용 적으면 바뀜
+    setValue(e.target.value)
+  };
+
   return (
     <div className="form-container h-1/2 w-1/2 fixed bg-[rgba(255,255,255,0.5)] rounded-xl">
       <form className="flex items-center justify-center pt-2">
@@ -14,6 +21,11 @@ export default function Form({handleChange, setShowForm}){
           className="form-cancle  bg-white absolute top-3 right-3 ml-3 aspect-square rounded-2xl"
           onClick={() => setShowForm(false)}
         >X</button>
+
+        <buttom
+          className="done-btn bg-white ml-3 p-2"
+          onClick={() => createMission()}
+        >완료</buttom>
 
       </form>
     </div>

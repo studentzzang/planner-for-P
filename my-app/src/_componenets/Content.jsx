@@ -5,26 +5,35 @@ import Form from './Form';
 export default function Content ({currentTab}){
 
   const [missions, setMission] = useState([]);
+  const [relevantMission, setRelevant] = useState([]); //연관된 미션
   const [isShowForm, setShowForm] = useState(false);
+  const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
-    setMission(e.target.value);
-  }
+  const createMission = (e) => {
 
-  const createMission = ([...relevants]) => {
+    e.preventDefault();
 
     let currentTime = new Date();
 
-    const missionData = {
+    const newMissionData = {
+
       id : Date.now(),
       date : [currentTime.getFullYear(), currentTime.getMonth()+1, currentTime.getDay(), currentTime.getHours()],
-      content : "",
+      content : value,
       dateUnit : {currentTab}, //= currentTab num
-      relevantMissions : relevants, //관련된 다른 단위 미션데이터
+      relevantMissions : relevantMission, //관련된 다른 단위 미션데이터
+      completed : false,
+
     }
 
+
+    //다른 데이터들 초기화
+    setMission(prev => [...prev, newMissionData]);
+
+    setRelevant([]);
+
+    setValue("");
   }
-  
 
   let currentTabTitle = "";
   let addIconSrc = "data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMTIuMDAyIDJjNS41MTggMCA5Ljk5OCA0LjQ4IDkuOTk4IDkuOTk4IDAgNS41MTctNC40OCA5Ljk5Ny05Ljk5OCA5Ljk5Ny01LjUxNyAwLTkuOTk3LTQuNDgtOS45OTctOS45OTcgMC01LjUxOCA0LjQ4LTkuOTk4IDkuOTk3LTkuOTk4em0wIDEuNWMtNC42OSAwLTguNDk3IDMuODA4LTguNDk3IDguNDk4czMuODA3IDguNDk3IDguNDk3IDguNDk3IDguNDk4LTMuODA3IDguNDk4LTguNDk3LTMuODA4LTguNDk4LTguNDk4LTguNDk4em0tLjc0NyA3Ljc1aC0zLjVjLS40MTQgMC0uNzUuMzM2LS43NS43NXMuMzM2Ljc1Ljc1Ljc1aDMuNXYzLjVjMCAuNDE0LjMzNi43NS43NS43NXMuNzUtLjMzNi43NS0uNzV2LTMuNWgzLjVjLjQxNCAwIC43NS0uMzM2Ljc1LS43NXMtLjMzNi0uNzUtLjc1LS43NWgtMy41di0zLjVjMC0uNDE0LS4zMzYtLjc1LS43NS0uNzVzLS43NS4zMzYtLjc1Ljc1eiIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+";
@@ -64,13 +73,22 @@ export default function Content ({currentTab}){
         <div className="mission-container w-3/4 h-3/4 my-16 bg-pink-300">
           {missions.map((data)=> (
             <div key={data.id} className="flex items-center justify-center w-full px-4 py-1 my-2 bg-slate-500">
+              <div className="flex items-center justify-between w-full px-4 py-1 bg-slate-100 text-teal-800 rounded-xl">
+                <div className="items-center">
 
+                  <input className="done-btn"
+                    type="checkbox"
+                  />
+                  <span className={data.completed ? "line-through" : "None"}>{data.title}</span>
+
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {isShowForm && <Form handleChange={handleChange} setShowForm={setShowForm}/>}
+      {isShowForm && <Form setShowForm={setShowForm} setValue={setValue} createMission={createMission}/>}
 
     </div>
   );

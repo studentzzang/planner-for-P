@@ -4,12 +4,14 @@ import Form from './Form';
 
 export default function Content ({currentTab}){
 
-  const [missions, setMission] = useState([]);
+  const [missions, setMission] = useState([]); //새 미션 state
   const [relevantMission, setRelevant] = useState([]); // 새 미션 연관된 미션
   const [isShowForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
 
-  const createMission = () => {
+  const createMission = (e) => {
+
+    e.preventDefault();
 
     let currentTime = new Date();
 

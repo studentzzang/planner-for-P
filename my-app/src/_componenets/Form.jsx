@@ -22,10 +22,10 @@ export default function Form({setShowForm, setValue, createMission}){
           onClick={() => setShowForm(false)}
         >X</button>
 
-        <buttom
+        <button
           className="done-btn bg-white ml-3 p-2"
           onClick={() => createMission()}
-        >완료</buttom>
+        >완료</button>
 
       </form>
     </div>

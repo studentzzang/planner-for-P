@@ -5,13 +5,11 @@ import Form from './Form';
 export default function Content ({currentTab}){
 
   const [missions, setMission] = useState([]);
-  const [relevantMission, setRelevant] = useState([]); //연관된 미션
+  const [relevantMission, setRelevant] = useState([]); // 새 미션 연관된 미션
   const [isShowForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
 
-  const createMission = (e) => {
-
-    e.preventDefault();
+  const createMission = () => {
 
     let currentTime = new Date();
 
@@ -25,7 +23,6 @@ export default function Content ({currentTab}){
       completed : false,
 
     }
-
 
     //다른 데이터들 초기화
     setMission(prev => [...prev, newMissionData]);
@@ -72,16 +69,14 @@ export default function Content ({currentTab}){
 
         <div className="mission-container w-3/4 h-3/4 my-16 bg-pink-300">
           {missions.map((data)=> (
-            <div key={data.id} className="flex items-center justify-center w-full px-4 py-1 my-2 bg-slate-500">
-              <div className="flex items-center justify-between w-full px-4 py-1 bg-slate-100 text-teal-800 rounded-xl">
-                <div className="items-center">
+            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-1 my-2 bg-slate-100 text-teal-800 rounded-xl">
+              <div className="items-center">
 
-                  <input className="done-btn"
-                    type="checkbox"
-                  />
-                  <span className={data.completed ? "line-through" : "None"}>{data.title}</span>
+                <input className="done-btn"
+                  type="checkbox"
+                />
+                <span className={data.completed ? "line-through" : "None"}>{data.title}</span>
 
-                </div>
               </div>
             </div>
           ))}

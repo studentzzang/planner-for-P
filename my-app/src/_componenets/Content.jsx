@@ -11,6 +11,12 @@ export default function Content ({currentTab}){
 
   const createMission = (e) => {
 
+    if (value.trim() === ""){ //공백 방지
+      e.preventDefault();
+
+      return;
+    }
+
     e.preventDefault();
 
     let currentTime = new Date();
@@ -19,7 +25,7 @@ export default function Content ({currentTab}){
 
       id : Date.now(),
       date : [currentTime.getFullYear(), currentTime.getMonth()+1, currentTime.getDay(), currentTime.getHours()],
-      content : value,
+      title : value,
       dateUnit : {currentTab}, //= currentTab num
       relevantMissions : relevantMission, //관련된 다른 단위 미션데이터
       completed : false,
@@ -59,7 +65,7 @@ export default function Content ({currentTab}){
     <div className = "bg flex justify-center items-center w-auto h-screen bg-gradient-to-tr from-green-200 to-cyan-200">
       <div className="content-container w-5/6 h-5/6">
 
-        <span className="title-container flex items-center w-1/2 bg-pink-300">
+        <span className="title-container flex items-center w-1/2">
           <span className="text-4xl font-semibold text-teal-700">{`${currentTabTitle} ${" 미션"}`}</span>
 
           <button className="form-btn"
@@ -69,15 +75,15 @@ export default function Content ({currentTab}){
 
         </span>
 
-        <div className="mission-container w-3/4 h-3/4 my-16 bg-pink-300">
+        <div className="mission-container w-1/2 h-3/4 my-16 bg-pink-300">
           {missions.map((data)=> (
-            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-1 my-2 bg-slate-100 text-teal-800 rounded-xl">
+            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-slate-100 text-teal-800 rounded-full">
               <div className="items-center">
 
                 <input className="done-btn"
                   type="checkbox"
                 />
-                <span className={data.completed ? "line-through" : "None"}>{data.title}</span>
+                <span className={ `${data.completed ? "line-through" : "None"} text-3xl`}>{data.title}</span>
 
               </div>
             </div>

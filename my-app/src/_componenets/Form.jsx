@@ -20,10 +20,10 @@ export default function Form({setShowForm, setValue, createMission}){
           onClick={() => setShowForm(false)}
         >X</button>
 
-        <input
+        <button
           type ="submit"
           className="done-btn bg-white ml-3 p-2"
-        >완료</input>
+        >완료</button>
 
       </form>
     </div>

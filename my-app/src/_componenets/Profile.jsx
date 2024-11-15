@@ -26,7 +26,7 @@ export default function Profile(){
 
       </div>
 
-      <div className="w-full my-4 flex flex-col items-start justify-between">
+      <div className="w-full my-4 flex flex-col items-start justify-center">
         <p className="text-teal-600">{titleExplain}</p>
         <p className="text-3xl font-bold text-teal-700">{title}</p>
         <p className="text-lg text-teal-600">{userId}</p>

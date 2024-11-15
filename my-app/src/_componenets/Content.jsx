@@ -9,6 +9,8 @@ export default function Content ({currentTab}){
   const [isShowForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
 
+  let themeColor = "";
+
   const createMission = (e) => {
 
     if (value.trim() === ""){ //공백 방지
@@ -46,27 +48,46 @@ export default function Content ({currentTab}){
   switch(currentTab){
     case 0:
       currentTabTitle = "오늘의";
+
+      themeColor = "bg-gradient-to-tr from-lime-200 to-cyan-200";
+
       break;
     
     case 1:
       currentTabTitle = "주간";
+
+      themeColor = "bg-gradient-to-tr from-indigo-200 to-cyan-200";
+
       break;
 
     case 2:
       currentTabTitle = "월간";
+
+      themeColor = "bg-gradient-to-tr from-purple-200 to-sky-200";
+
       break;
 
     case 3:
       currentTabTitle = "연간"
+
+      themeColor = "bg-gradient-to-tr from-orange-200 to-pink-200";
+      
       break;
   }
 
+  const currentDateInfo = (unit)=>{
+
+
+
+    return;
+  }
+
   return (
-    <div className = "bg flex justify-center items-center w-auto h-screen bg-gradient-to-tr from-green-200 to-cyan-200">
+    <div className = {`${themeColor} flex justify-center items-center w-auto h-screen bg-gradient-to-tr `}>
       <div className="content-container w-5/6 h-5/6">
 
         <span className="title-container flex items-center w-1/2">
-          <span className="text-4xl font-semibold text-teal-700">{`${currentTabTitle} ${" 미션"}`}</span>
+          <span className="text-4xl font-semibold text-slate-700">{`${currentTabTitle} ${" 미션"}`}</span>
 
           <button className="form-btn"
             onClick={() => setShowForm(true)}>
@@ -75,15 +96,19 @@ export default function Content ({currentTab}){
 
         </span>
 
-        <div className="mission-container w-1/2 h-3/4 my-16 bg-pink-300">
+        <div className="mission-container w-2/3 h-3/4 my-16">
           {missions.map((data)=> (
-            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-slate-100 text-teal-800 rounded-full">
-              <div className="items-center">
+            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-white text-slate-600 rounded-full">
+              <div className="flex items-center">
 
-                <input className="done-btn"
+                <input
+                  className={`done-btn appearance-none bg-white p-3 ml-3 border-emerald-900 rounded-lg outline-neutral-900 outline outline-2
+                    checked:${themeColor}`}
+                    
                   type="checkbox"
+                  onChange={() => setMission(missions => missions.map(m => m.id === data.id ? { ...m, completed: !m.completed } : m))}
                 />
-                <span className={ `${data.completed ? "line-through" : "None"} text-3xl`}>{data.title}</span>
+                <span className={ `${data.completed ? "line-through" : "None"} text-3xl font-semibold mx-3 animate-show-up-l`}>{data.title}</span>
 
               </div>
             </div>

@@ -1,7 +1,7 @@
   export default function MenuBar({currentTab, handleTab}){
 
-    const btnStyle = "block p-3 my-12 text-4xl text-teal-800 transition-all duration-300 ease-in-out";
-    const currentBtnStyle = "mx-5 text-4xl text-teal-500 font-semibold transition-all duration-300 ease-in-out";
+    const btnStyle = "block p-3 my-12 text-4xl transition-all duration-300 ease-in-out";
+    const currentBtnStyle = "mx-5 text-4xl font-semibold transition-all duration-300 ease-in-out";
 
     return (
       <div className="menu-bar flex justify-center items-center">

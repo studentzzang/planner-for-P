@@ -1,4 +1,4 @@
-export default function Form({setShowForm, setValue, createMission}){
+export default function Form({setShowForm, value, setValue, createMission}){
 
   const handleChange = (e) => { //form에 할일내용 적으면 바뀜
     setValue(e.target.value)
@@ -11,6 +11,7 @@ export default function Form({setShowForm, setValue, createMission}){
           className="w-2/3 px-3 py-2 text-teal-800 border rounded"
           type="text"
           name="value"
+          value={value}
           placeholder="미션이 무엇인가요?"
           onChange={handleChange}
         />

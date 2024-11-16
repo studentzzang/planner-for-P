@@ -1,6 +1,8 @@
 
 import {useState} from 'react';
 import Form from './Form';
+import Missions from './Missions';
+import CircularProgress from './CircleProgress';
 
 export default function Content ({currentTab}){
 
@@ -40,10 +42,14 @@ export default function Content ({currentTab}){
     setRelevant([]);
 
     setValue("");
+
+    console.log(newMissionData.completed)
   }
 
   let currentTabTitle = "";
+
   let addIconSrc = "data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMTIuMDAyIDJjNS41MTggMCA5Ljk5OCA0LjQ4IDkuOTk4IDkuOTk4IDAgNS41MTctNC40OCA5Ljk5Ny05Ljk5OCA5Ljk5Ny01LjUxNyAwLTkuOTk3LTQuNDgtOS45OTctOS45OTcgMC01LjUxOCA0LjQ4LTkuOTk4IDkuOTk3LTkuOTk4em0wIDEuNWMtNC42OSAwLTguNDk3IDMuODA4LTguNDk3IDguNDk4czMuODA3IDguNDk3IDguNDk3IDguNDk3IDguNDk4LTMuODA3IDguNDk4LTguNDk3LTMuODA4LTguNDk4LTguNDk4LTguNDk4em0tLjc0NyA3Ljc1aC0zLjVjLS40MTQgMC0uNzUuMzM2LS43NS43NXMuMzM2Ljc1Ljc1Ljc1aDMuNXYzLjVjMCAuNDE0LjMzNi43NS43NS43NXMuNzUtLjMzNi43NS0uNzV2LTMuNWgzLjVjLjQxNCAwIC43NS0uMzM2Ljc1LS43NXMtLjMzNi0uNzUtLjc1LS43NWgtMy41di0zLjVjMC0uNDE0LS4zMzYtLjc1LS43NS0uNzVzLS43NS4zMzYtLjc1Ljc1eiIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+";
+  let guideIconSrc ="";
 
   switch(currentTab){
     case 0:
@@ -78,48 +84,40 @@ export default function Content ({currentTab}){
 
   return (
     <div className = {`${themeColor} flex justify-center items-center w-auto h-screen bg-gradient-to-tr `}>
-      <div className="content-container w-5/6 h-5/6">
+      <div className="content-container w-3/4 h-5/6">
 
-        <span className="title-container flex items-center w-1/2">
-          <span className="text-4xl font-semibold text-slate-700">{`${currentTabTitle} ${" 미션"}`}</span>
+        <div className="list-container flex flex-col items-start justify-start">
 
-          <button className="form-btn"
-            onClick={() => setShowForm(true)}>
-            <img src={addIconSrc} className="inline w-10 h-10"/>
-          </button>
+          <span className="title-container flex items-center w-1/2">
+            <span className="text-4xl font-semibold text-slate-700">{`${currentTabTitle} ${" 미션"}`}</span>
 
-        </span>
+            <button className="form-btn"
+              onClick={() => setShowForm(true)}>
+              <img src={addIconSrc} className="inline w-10 h-10"/>
+            </button>
 
-        <div className="contents-container flex items-center">
-          <div className="mission-container w-2/3 max-h-[50vh] overflow-y-auto my-16">
-            {missions.map((data)=> (
-              <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-white text-slate-600 rounded-full">
-                <div className="flex items-center">
+          </span>
 
-                  <input
-                    className="done-btn appearance-none bg-white p-3 ml-3 border-emerald-900 rounded-lg outline-neutral-900 outline outline-2
-                      checked:bg-slate-50"
-                      
-                    type="checkbox"
-                    onChange={() => setMission(missions => missions.map(m => m.id === data.id ? { ...m, completed: !m.completed } : m))}
-                  />
-                  <span className={ `${data.completed ? "line-through" : "None"} text-3xl font-semibold mx-3 animate-show-up-l`}>{data.title}</span>
-
-                </div>
-              </div>
-            ))}
+          <div className={`mission-container w-2/3 max-h-[45vh] min-h-[20vh] overflow-y-auto my-16`}>
+            <Missions missions = {missions} setMission={setMission} bool={false}/>
           </div>
+          
+          <span className="title-container flex items-center w-1/2">
+            <span className="text-4xl font-semibold text-slate-700">완료된 미션</span>
+
+            <img></img>
+          </span>
+
+          <div className={`mission-container w-2/3 max-h-[20vh] overflow-y-auto my-16`}>
+            <Missions missions = {missions} setMission={setMission} bool={true}/>
+          </div>
+
         </div>
-
-        <div className="completed-container w-2/3 h-1/5 bg-pink flex items-center justify-center bg-pink-300">
-
-        </div>
-
       </div>
 
-      
+      {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
 
-      {isShowForm && <Form setShowForm={setShowForm} setValue={setValue} createMission={createMission}/>}
+      <CircularProgress/>
 
     </div>
   );

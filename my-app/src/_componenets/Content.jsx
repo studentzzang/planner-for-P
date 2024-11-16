@@ -75,12 +75,6 @@ export default function Content ({currentTab}){
       break;
   }
 
-  const currentDateInfo = (unit)=>{
-
-
-
-    return;
-  }
 
   return (
     <div className = {`${themeColor} flex justify-center items-center w-auto h-screen bg-gradient-to-tr `}>
@@ -96,25 +90,34 @@ export default function Content ({currentTab}){
 
         </span>
 
-        <div className="mission-container w-2/3 h-3/4 my-16">
-          {missions.map((data)=> (
-            <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-white text-slate-600 rounded-full">
-              <div className="flex items-center">
+        <div className="contents-container flex items-center">
+          <div className="mission-container w-2/3 max-h-[50vh] overflow-y-auto my-16">
+            {missions.map((data)=> (
+              <div key={data.id}  className="flex items-center justify-between w-full px-4 py-6 my-4 bg-white text-slate-600 rounded-full">
+                <div className="flex items-center">
 
-                <input
-                  className={`done-btn appearance-none bg-white p-3 ml-3 border-emerald-900 rounded-lg outline-neutral-900 outline outline-2
-                    checked:${themeColor}`}
-                    
-                  type="checkbox"
-                  onChange={() => setMission(missions => missions.map(m => m.id === data.id ? { ...m, completed: !m.completed } : m))}
-                />
-                <span className={ `${data.completed ? "line-through" : "None"} text-3xl font-semibold mx-3 animate-show-up-l`}>{data.title}</span>
+                  <input
+                    className="done-btn appearance-none bg-white p-3 ml-3 border-emerald-900 rounded-lg outline-neutral-900 outline outline-2
+                      checked:bg-slate-50"
+                      
+                    type="checkbox"
+                    onChange={() => setMission(missions => missions.map(m => m.id === data.id ? { ...m, completed: !m.completed } : m))}
+                  />
+                  <span className={ `${data.completed ? "line-through" : "None"} text-3xl font-semibold mx-3 animate-show-up-l`}>{data.title}</span>
 
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        <div className="completed-container w-2/3 h-1/5 bg-pink flex items-center justify-center bg-pink-300">
+
+        </div>
+
       </div>
+
+      
 
       {isShowForm && <Form setShowForm={setShowForm} setValue={setValue} createMission={createMission}/>}
 

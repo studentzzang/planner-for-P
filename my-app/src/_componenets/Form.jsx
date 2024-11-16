@@ -16,7 +16,7 @@ export default function Form({setShowForm, setValue, createMission}){
         />
 
         <button 
-          className="form-cancle  bg-white absolute top-3 right-3 ml-3 aspect-square rounded-2xl"
+          className="form-cancle  bg-white relative -right-36 top-1 rounded-2xl"
           onClick={() => setShowForm(false)}
         >X</button>
 

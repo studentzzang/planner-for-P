@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
 export default function Profile(){
-
   
   const _title = ["재빠른 퓨마", "부지런한 새", "느릿한 거북이", "게으른 고양이", "도전하는 다람쥐"];
   const _titleExplain = ["정말 멋져요!", "잘하고 있어요!", "조금 더 힘내요!", "어서 해볼까요?","시작이 반이에요!"];

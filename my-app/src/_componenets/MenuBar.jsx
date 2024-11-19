@@ -1,6 +1,6 @@
   export default function MenuBar({currentTab, handleTab}){
 
-    const btnStyle = "block p-3 my-12 text-4xl transition-all duration-300 ease-in-out";
+    const btnStyle = "block p-3 my-12 text-4xl text-slate-700 transition-all duration-300 ease-in-out";
     const currentBtnStyle = "mx-5 text-4xl font-semibold transition-all duration-300 ease-in-out";
 
     return (

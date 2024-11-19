@@ -83,8 +83,8 @@ export default function Content ({currentTab}){
 
 
   return (
-    <div className = {`${themeColor} flex relative justify-center items-center w-auto  h-screen bg-gradient-to-tr `}>
-      <div className="content-container w-3/4 h-5/6">
+    <div className = {`${themeColor} flex relative justify-between items-center w-auto  h-screen bg-gradient-to-tr `}>
+      <div className="content-container ml-16 w-3/4 h-5/6">
 
         <div className="list-container flex flex-col items-start justify-start">
 
@@ -118,7 +118,7 @@ export default function Content ({currentTab}){
       </div>
 
 
-      <CircularProgress/>
+      <CircularProgress color={themeColor}/>
 
     </div>
   );

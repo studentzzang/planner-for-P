@@ -7,8 +7,8 @@ export default function Form({setShowForm, setValue, createMission}){
   };
 
   return (
-    <div className="form-container absolute inset-0 bg-[rgba(255,255,255,0.5)] rounded-xl">
-      <form className="flex items-center justify-center pt-2">
+    <div className="form-container absolute inset-0 bg-[rgba(255,255,255,0.5)]">
+      <form className="flex items-center appearance-none justify-center pt-2" onSubmit={(e) => createMission(e)}>
         <input
           className="w-2/3 px-3 py-2 text-teal-800 border rounded"
           type="text"
@@ -22,10 +22,10 @@ export default function Form({setShowForm, setValue, createMission}){
           onClick={() => setShowForm(false)}
         >X</button>
 
-        <buttom
+        <button
           className="done-btn bg-white ml-3 p-2"
-          onClick={() => createMission()}
-        >완료</buttom>
+          type="submit"
+        >완료</button>
 
       </form>
     </div>

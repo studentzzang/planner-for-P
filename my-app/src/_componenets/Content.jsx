@@ -83,39 +83,40 @@ export default function Content ({currentTab}){
 
 
   return (
-    <div className = {`${themeColor} flex justify-center items-center w-auto h-screen bg-gradient-to-tr `}>
+    <div className = {`${themeColor} flex relative justify-center items-center w-auto  h-screen bg-gradient-to-tr `}>
       <div className="content-container w-3/4 h-5/6">
 
         <div className="list-container flex flex-col items-start justify-start">
 
           <span className="title-container flex items-center w-1/2">
-            <span className="text-4xl font-semibold text-slate-700">{`${currentTabTitle} ${" 미션"}`}</span>
+            <span className="text-3xl font-semibold text-slate-700">{`${currentTabTitle} ${" 미션"}`}</span>
 
             <button className="form-btn"
               onClick={() => setShowForm(true)}>
-              <img src={addIconSrc} className="inline w-10 h-10"/>
+              <img src={addIconSrc} className="inline w-9 h-9"/>
             </button>
 
           </span>
 
-          <div className={`mission-container w-2/3 max-h-[45vh] min-h-[20vh] overflow-y-auto my-16`}>
+          <div className={`mission-container w-2/3 max-h-[45vh] min-h-[20vh] overflow-y-auto my-8`}>
             <Missions missions = {missions} setMission={setMission} bool={false}/>
           </div>
           
           <span className="title-container flex items-center w-1/2">
-            <span className="text-4xl font-semibold text-slate-700">완료된 미션</span>
+            <span className="text-3xl font-semibold text-slate-700">완료된 미션</span>
 
             <img></img>
           </span>
 
-          <div className={`mission-container w-2/3 max-h-[20vh] overflow-y-auto my-16`}>
+          <div className={`mission-container w-2/3 max-h-[20vh] overflow-y-auto my-`}>
             <Missions missions = {missions} setMission={setMission} bool={true}/>
           </div>
 
         </div>
+        {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
+
       </div>
 
-      {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
 
       <CircularProgress/>
 

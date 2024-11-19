@@ -12,8 +12,10 @@ function App() {
 
   return (
     <>
-      <Menu currentTab={currentTab} handleTab={handleTab}/>
-      <Content currentTab={currentTab}/>
+      <div className="aspect-w-16 aspect-h-9">
+        <Menu currentTab={currentTab} handleTab={handleTab}/>
+        <Content currentTab={currentTab}/>
+      </div>
     </>
   )
 }

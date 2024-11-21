@@ -6,7 +6,6 @@
     return (
       <div className="menu-bar flex justify-center items-center">
         <div className="button-container w-5/6 my-1">
-
           <button className={`${btnStyle} ${currentTab === 0 ? currentBtnStyle : ''}`} onClick={()=>handleTab(0)}>오늘의 미션</button>
           <button className={`${btnStyle} ${currentTab === 1 ? currentBtnStyle : ''}`} onClick={()=>handleTab(1)}>주간 미션</button>
           <button className={`${btnStyle} ${currentTab === 2 ? currentBtnStyle : ''}`} onClick={()=>handleTab(2)}>월간 미션</button>

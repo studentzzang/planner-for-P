@@ -113,13 +113,10 @@ export default function Content ({currentTab}){
           </div>
 
         </div>
-        {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
 
       </div>
-
-
-      <CircularProgress color={themeColor}/>
-
+      <CircularProgress color={themeColor} currentTab={currentTab} progress={70}/>
+      {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
     </div>
   );
 };

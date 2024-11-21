@@ -7,10 +7,10 @@ export default function Form({setShowForm, setValue, createMission}){
   };
 
   return (
-    <div className="form-container absolute inset-0 bg-[rgba(255,255,255,0.5)]">
-      <form className="flex items-center appearance-none justify-center pt-2" onSubmit={(e) => createMission(e)}>
+    <div className="form-container flex items-center absolute inset-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-sm">
+      <form className="flex justify-center w-full pt-2" onSubmit={(e) => createMission(e)}>
         <input
-          className="w-2/3 px-3 py-2 text-teal-800 border rounded"
+          className="w-2/3 px-3 py-2 text-teal-800 border rounded outline-none"
           type="text"
           name="value"
           placeholder="미션이 무엇인가요?"

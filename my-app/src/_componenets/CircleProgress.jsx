@@ -1,16 +1,17 @@
 import {useState} from 'react';
 
-export default function CircleProgress(color, currentTab, missions){
-
-    const [progress, setProgress] = useState();
+export default function CircleProgress(color, currentTab, progress){
 
     const size = 256;
-    const r = size / 2-5; //반지름
+    const strokeWidth = 32
+    const r = (size / 2) - (strokeWidth / 2);  //반지름
     const c =  2 * Math.PI * r; //둘레
     const offset = c - (progress/ 100) * c;
 
+    console.log(color);
+
     return (
-        <div className="flex justify-center items-center circle-container w-[30vh] h-[30vh] bg-pink-300 self-start m-12 aspect-square">
+        <div className="flex justify-center items-center circle-container bg-pink-400 w-[30vh] h-[30vh] self-start m-12 aspect-square">
             <svg
                 width={size}
                 height={size}
@@ -21,7 +22,8 @@ export default function CircleProgress(color, currentTab, missions){
                     cy={size/2}
                     r={r}
                     stroke={color}
-                    strokeDasharray={offset}
+                    strokeWidth={strokeWidth}
+                    fill="None"
                     strokeLinecap='round'
                     className="transition-all duration-300"
                 />

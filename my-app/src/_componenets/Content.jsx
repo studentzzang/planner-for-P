@@ -43,7 +43,6 @@ export default function Content ({currentTab}){
 
     setValue("");
 
-    console.log(newMissionData.completed)
   }
 
   let currentTabTitle = "";
@@ -116,7 +115,7 @@ export default function Content ({currentTab}){
 
       </div>
       <CircularProgress color={themeColor} currentTab={currentTab} progress={70}/>
-      {isShowForm && <Form setShowForm={setShowForm} value={value} setValue={setValue} createMission={createMission}/>}
+      {isShowForm && <Form setShowForm={setShowForm} setValue={setValue} missions={missions} createMission={createMission}/>}
     </div>
   );
 };

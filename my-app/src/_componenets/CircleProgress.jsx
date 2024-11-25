@@ -8,8 +8,6 @@ export default function CircleProgress(color, currentTab, progress){
     const c =  2 * Math.PI * r; //둘레
     const offset = c - (progress/ 100) * c;
 
-    console.log(color);
-
     return (
         <div className="flex justify-center items-center circle-container bg-pink-400 w-[30vh] h-[30vh] self-start m-12 aspect-square">
             <svg

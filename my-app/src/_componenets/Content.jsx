@@ -30,7 +30,7 @@ export default function Content ({currentTab}){
       id : Date.now(),
       date : [currentTime.getFullYear(), currentTime.getMonth()+1, currentTime.getDay(), currentTime.getHours()],
       title : value,
-      dateUnit : {currentTab}, //= currentTab num
+      dateUnit : currentTab, //= currentTab num
       relevantMissions : relevantMission, //관련된 다른 단위 미션데이터
       completed : false,
 
@@ -98,7 +98,7 @@ export default function Content ({currentTab}){
           </span>
 
           <div className={`mission-container w-2/3 max-h-[45vh] min-h-[20vh] overflow-y-auto my-8`}>
-            <Missions missions = {missions} setMission={setMission} bool={false}/>
+            <Missions missions = {missions} setMission={setMission} currentTab={currentTab} bool={false}/>
           </div>
           
           <span className="title-container flex items-center w-1/2">
@@ -108,7 +108,7 @@ export default function Content ({currentTab}){
           </span>
 
           <div className={`mission-container w-2/3 max-h-[20vh] overflow-y-auto my-`}>
-            <Missions missions = {missions} setMission={setMission} bool={true}/>
+            <Missions missions = {missions} setMission={setMission} currentTab={currentTab} bool={true}/>
           </div>
 
         </div>

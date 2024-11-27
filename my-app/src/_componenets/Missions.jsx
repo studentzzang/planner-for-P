@@ -1,7 +1,10 @@
-export default function Missions({missions, setMission, bool}){
+export default function Missions({missions, setMission, currentTab, bool}){
+
+    console.log(currentTab, missions);
+
   return(
     <div>
-      {missions.filter((data)=>data.completed === bool).map((data)=> (
+      {missions.filter((data)=>data.completed === bool && data.dateUnit === currentTab).map((data)=> (
 
         <div key={data.id}  className={`mission flex items-center justify-between w-full px-4 py-4 my-2 bg-white text-slate-600 rounded-full
         ${data.completed !== bool ? "animate-fadeout" : "animate-fadein"}`}>

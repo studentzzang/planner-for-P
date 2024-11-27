@@ -13,5 +13,4 @@ my-app/firebase.json
 my-app/firestore.indexes.json
 my-app/public/vite.svg
 my-app/src/assets/react.svg
-my-app/src/firebase/Authentication.js
-my-app/src/firebase/Backend.js
+node_modules

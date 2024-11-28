@@ -11,12 +11,12 @@ import {
 
 const auth = getAuth();
 
-//로그인
-export const signupEmail = (email, pw) => {
-  return createUserWithEmailAndPassword(auth, email, pw);
+//Email 로그인
+export const signupEmail = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
 };
 
-//회원가입
-export const loginEmail = (email, pw) => {
-  return signInWithCredential(auth, email, pw);
+//Email 회원가입
+export const loginEmail = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
 };

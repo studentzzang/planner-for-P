@@ -1,6 +1,4 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
-import {getFirestore} from 'firebase/firestore';
-import {useState, useEffect} from 'react';
 
 export default function Login(){
 

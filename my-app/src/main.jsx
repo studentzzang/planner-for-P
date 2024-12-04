@@ -6,6 +6,6 @@ import Login from './firebase/login.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Login/>
+    <App/>
   </StrictMode>,
 )

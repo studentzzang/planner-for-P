@@ -1,6 +1,12 @@
-import {useStaet} from 'react';
+import {useState} from 'react';
 
 export default function Form({setShowForm, setValue, missions, createMission}){
+
+  const [associateMissions, setAssociate] = useState([]); 
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => setIsOpen((prev) => !prev);
+
+  const listDesign = "bg-white rounded-xl py-2 flex";
 
   const handleChange = (e) => { //form에 할일내용 적으면 바뀜
     setValue(e.target.value)
@@ -22,8 +28,8 @@ export default function Form({setShowForm, setValue, missions, createMission}){
   }
 
   return (
-    <div className="content-container flex flex-col absolute inset-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-sm">
-      <div className="form-container">
+    <div className="content-container flex flex-col items-center justify-center absolute inset-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-sm">
+      <div className="form-container w-3/4 ">
         <form className="flex justify-center w-full pt-2" onSubmit={(e) => createMission(e)}>
           <input
             className="w-2/3 px-3 py-2 text-teal-800 border rounded outline-none"
@@ -46,19 +52,29 @@ export default function Form({setShowForm, setValue, missions, createMission}){
         </form>
       </div>
 
-      <div className="other">
+      <div className="associate-container flex flex-col w-full items-center">
 
-        <div className="input-container">
-            
-          <label>어떤 미션을 위한 미션인가요?</label>
-          <input list="missions" name="missions"/>
-          <datalist id="missions">
-            {missions.map((data) => (
-              <div key={data.id}>
-                <option value={missionUnit(data.dateUnit)+data.title}></option>
-              </div>
-            ))} 
-          </datalist>
+        <div className="input-container w-1/3">
+          <span className="align-middle">어떤 미션을 위한 미션인가요?</span> <br/>
+          <div className="lists flex flex-col">
+            <button
+              className={listDesign}
+              onClick={toggleDropdown}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+
+            </button>
+
+            {isOpen && (
+              <ul>
+                {missions.map((data)=>(
+                  <li key={data.id} className={listDesign}>{data.title}</li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
         
       </div>
